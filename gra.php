@@ -16,8 +16,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>To-Do-List</title>
 	<link rel="icon" type="image/png" href="favicon.png">
-	<link rel="stylesheet" href="style.css">
-  <script src="script.js" async></script>
+	<link rel="stylesheet" href="client.css">
 </head>
 
 <body>
@@ -30,26 +29,36 @@
     <li class="menu__item">Settings</li>
 	<li class="menu__item"><?php echo '<a href="logout.php">Log Out!</a>'; ?></li>
   </ul>
-</nav>
-<div id="myDIV" class="header">
-  <h2 style="margin:5px">My To Do List</h2>
-  <input type="text" id="myInput" placeholder="Title...">
-  <span onclick="newElement()" class="addBtn">Add</span>
-</div>
+  </nav>
 
+  <div class="form-box">
+  <h1 class="form-box__title">Add new task</h1>
+    <form class="form-box__form form" action="add.php" method="post">
+      <input class="form__text-input" type="text" name="title" id="e-mail" placeholder="Title">
+      <textarea class="form__text-input"  name="text" id="password" placeholder="Write something..." rows="12"></textarea>
+      <button class="form__button" type="submit">Add</button>
+    </form>
+</div>
 <div class="container">
-	<div class="item">
-	<div class="item__header">
-	<h2 class="item__title">Intro to css layouts</h2>
-	</div>
-		<div class="item__content">
-		<p class="item__paragraph">
-		This course is dedicated for
-		beginners, who want to start
-		their journey with CSS
-		layouts.
-		</p>
-</div>
-</div>
+
+<?php
+$user_id = $_SESSION['id'];
+
+  require_once "connect.php";
+
+	$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+    
+    $query = "SELECT `id`, `title`, `text`, `user_id` FROM `notatki` WHERE `user_id`='$user_id'";
+    $result = mysqli_query($polaczenie,$query);
+    while ($row = mysqli_fetch_array  ($result))
+    {
+        echo '<div class="item" name="'.$row['id'].'">';
+        echo '<div class="item__header">';
+        echo '<h2 class="item__title">'.$row['title'].$user_id.'</h2> </div>';
+        echo '<div class="item__content"> <p class="item__paragraph">'.$row['text']."</p>";
+        echo '<button class="item__button button" action="delete.php">Delete</button> </div> </div>';
+
+    }
+?>
 </body>
 </html>
