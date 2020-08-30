@@ -56,7 +56,7 @@ $user_id = $_SESSION['id'];
         echo '<div class="item__header">';
         echo '<h2 class="item__title">'.$row['title'].'</h2> </div>';
         echo '<div class="item__content"> <p class="item__paragraph">'.$row['text']."</p>";
-        echo '<form action="delete.php" method="post" name="'.$row['id'].'"><button class="item__button button" type="submit" >Delete</button></form> </div> </div>';
+        echo '<form action="delete.php" method="post" ><button class="item__button button" type="submit" name="'.$row['id'].'" value="'.$row['id'].'">Delete</button></form> </div> </div>';
 
     }
 ?>
