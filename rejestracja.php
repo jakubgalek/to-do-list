@@ -46,9 +46,6 @@
 	  <p class="form-box__info"><a href="index.php">Log In</a></p>
     </form>
 </div>
-		
-	
-
 
 </body>
 </html>

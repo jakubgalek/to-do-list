@@ -20,15 +20,13 @@
 </head>
 
 <body>
-	
-
 	<nav class="navigation">
-  <span class="logo">To Do List</span>
-  <ul class="menu">
-    <li class="menu__item"><?php echo "Hello ".$_SESSION['user'].' !'; ?></li>
-    <li class="menu__item">Settings</li>
-	<li class="menu__item"><?php echo '<a href="logout.php">Log Out!</a>'; ?></li>
-  </ul>
+    <span class="logo">To Do List</span>
+    <ul class="menu">
+      <li class="menu__item"><?php echo "Hello ".$_SESSION['user'].' !'; ?></li>
+      <li class="menu__item">Settings</li>
+      <li class="menu__item"><?php echo '<a href="logout.php">Log Out!</a>'; ?></li>
+    </ul>
   </nav>
 
   <div class="form-box">
@@ -42,11 +40,10 @@
 <div class="container">
 
 <?php
-$user_id = $_SESSION['id'];
+    $user_id = $_SESSION['id'];
+    require_once "connect.php";
 
-  require_once "connect.php";
-
-	$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+	  $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
     
     $query = "SELECT `id`, `title`, `text`, `user_id` FROM `notatki` WHERE `user_id`='$user_id'";
     $result = mysqli_query($polaczenie,$query);
@@ -57,7 +54,6 @@ $user_id = $_SESSION['id'];
         echo '<h2 class="item__title">'.$row['title'].'</h2> </div>';
         echo '<div class="item__content"> <p class="item__paragraph">'.$row['text']."</p>";
         echo '<form action="delete.php" method="post" ><button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Delete</button></form> </div> </div>';
-
     }
 ?>
 </body>

@@ -107,3 +107,6 @@ body {
   font-weight: 600;
   display: block;
 }
+
+a,a:visited
+{color: white;}
