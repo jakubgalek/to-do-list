@@ -6,7 +6,6 @@ $email = $_POST['e-mail'];
 
 
 if($login and $haslo) {
-	
 require_once "connect.php";
 $mysqli = @new mysqli($host, $db_user, $db_password, $db_name);
 

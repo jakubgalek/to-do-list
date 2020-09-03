@@ -49,8 +49,6 @@ body {
 }
 
 .form-box {
-  width: 459px;
-  height: 493px;
   padding: 20px 55px;
   border: 2px solid white;
   display: -webkit-box;
@@ -72,7 +70,7 @@ body {
 }
 
 .form {
-  margin-top: 45px;
+  margin-top: 5px;
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
@@ -98,7 +96,7 @@ body {
   font-weight: 300;
 }
 .form__button {
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 12px;
   background-color: white;
   border: none;
@@ -110,3 +108,8 @@ body {
 
 a,a:visited
 {color: white;}
+
+.error{
+  color: red;
+  font-size: 10px;
+}
