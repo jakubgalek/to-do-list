@@ -42,7 +42,7 @@ body {
   }
 
 .button {
-  margin-top: 50px;
+  margin-top: 10px;
   background-color: white;
   border: none;
   font-size: 14px;
@@ -50,6 +50,7 @@ body {
   padding: 10px 19px;
   font-weight: 600;
   display: block;
+  width: -webkit-fill-available;
 }
 
 .info {
@@ -131,7 +132,7 @@ body {
 }
 
 .form-box {
-    width: 20%;
+    width: 100%;
   }
 
   .form-box__title {
@@ -182,3 +183,8 @@ body {
   
 a,a:visited
 {color: white;}
+
+.buttons{
+  display: block;
+  width: 96%;
+}

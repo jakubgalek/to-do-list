@@ -28,16 +28,21 @@
       <li class="menu__item"><?php echo '<a href="logout.php">Log Out!</a>'; ?></li>
     </ul>
   </nav>
+  <div class="container">
 
-  <div class="form-box">
-  <h1 class="form-box__title">Add new task</h1>
-    <form class="form-box__form form" action="add.php" method="post">
-      <input class="form__text-input" type="text" name="title" id="e-mail" placeholder="Title">
-      <textarea class="form__text-input"  name="text" id="password" placeholder="Write something..." rows="12"></textarea>
-      <button class="form__button" type="submit">Add</button>
-    </form>
-</div>
-<div class="container">
+   <div class="form-box">
+   <h1 class="form-box__title">Add new task</h1>
+     <form class="form-box__form form" action="add.php" enctype="multipart/form-data" method="post">
+       <input class="form__text-input" type="text" name="title" id="e-mail" placeholder="Title" />
+       <textarea class="form__text-input"  name="text" id="password" placeholder="Write something..." rows="12"></textarea>
+       <input type="hidden" name="size" value="1000000" />
+  	   <div>
+  	         <input type="file" name="image" />
+  	   </div>
+       <button class="form__button" type="submit" name="add">Add</button>
+     </form>
+   </div>
+
 
 <?php
     $user_id = $_SESSION['id'];
@@ -53,8 +58,19 @@
         echo '<div class="item__header">';
         echo '<h2 class="item__title">'.$row['title'].'</h2> </div>';
         echo '<div class="item__content"> <p class="item__paragraph">'.$row['text']."</p>";
-        echo '<form action="delete.php" method="post" ><button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Delete</button></form> </div> </div>';
-    }
+        echo "<div id='img_div'>";
+      	echo "<img src='images/".$row['image']."' >";
+        echo '</div> <div class="buttons">';
+        echo '<button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Modify</button>';
+        echo '<button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Sent to mail</button>';
+        echo '<form action="delete.php" method="post" ><button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Delete</button></form> </div> </div> </div>';
+
+      }
+
+       if(isset($_SESSION['missTitle']))	echo $_SESSION['missTitle'];
+       unset($_SESSION['missTitle']);
 ?>
+</div>
+
 </body>
 </html>

@@ -39,10 +39,11 @@
       <input class="form__text-input" type="password" name="haslo" id="password" placeholder="password">
 	  <?php
 		if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
+		unset($_SESSION['blad']);
 	  ?>
       <button class="form__button" type="submit">Log In</button>
 
-	  <p class="form-box__info"><a href="rejestracja.php">Create new account</a></p>
+	  <p class="form-box__info"><a href="register.php">Create new account</a></p>
     </form>
 </div>
 		
