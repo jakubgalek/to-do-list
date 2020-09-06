@@ -121,6 +121,9 @@ body {
           flex-direction: column;
   -webkit-box-align: center;
           align-items: center;
+
+  overflow: hidden;
+  max-width: -webkit-fill-available;
 }
 .item__title {
   margin: 0;
@@ -129,6 +132,8 @@ body {
 }
 .item__paragraph, .item__button {
   font-size: 14px;
+  overflow: hidden;
+  max-width: -webkit-fill-available;
 }
 
 .form-box {

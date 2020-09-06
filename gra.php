@@ -57,7 +57,7 @@
         echo '<div class="item__header">';
         echo '<h2 class="item__title">'.$row['title'].'</h2> </div>';
         echo '<div class="item__content"> <p class="item__paragraph">'.$row['text']."</p>";
-        if(is_string($row['image'])==false){
+        if(($row['image'])!="uploads/"){
         echo "<div id='img_div'>";
       	echo '<img src="'.$row['image'].'" style="max-width: 211px;" ></div> ';}
         echo '<div class="buttons">';
@@ -71,6 +71,5 @@
        unset($_SESSION['missTitle']);
 ?>
 </div>
-
 </body>
 </html>
