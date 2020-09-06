@@ -33,13 +33,12 @@
    <div class="form-box">
    <h1 class="form-box__title">Add new task</h1>
      <form class="form-box__form form" action="add.php" enctype="multipart/form-data" method="post">
-       <input class="form__text-input" type="text" name="title" id="e-mail" placeholder="Title" />
+       <input class="form__text-input" type="text" name="title" id="e-mail" placeholder="Title">
        <textarea class="form__text-input"  name="text" id="password" placeholder="Write something..." rows="12"></textarea>
-       <input type="hidden" name="size" value="1000000" />
   	   <div>
-  	         <input type="file" name="image" />
+  	         <input type="file" name="fileToUpload" id="fileToUpload">
   	   </div>
-       <button class="form__button" type="submit" name="add">Add</button>
+       <button class="form__button" type="submit" name="submit">Add</button>
      </form>
    </div>
 
@@ -50,7 +49,7 @@
 
 	  $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
     
-    $query = "SELECT `id`, `title`, `text`, `user_id` FROM `notatki` WHERE `user_id`='$user_id'";
+    $query = "SELECT `id`, `title`, `text`,`image`,`user_id` FROM `notatki` WHERE `user_id`='$user_id' ORDER BY id DESC";
     $result = mysqli_query($polaczenie,$query);
     while ($row = mysqli_fetch_array  ($result))
     {
@@ -58,9 +57,10 @@
         echo '<div class="item__header">';
         echo '<h2 class="item__title">'.$row['title'].'</h2> </div>';
         echo '<div class="item__content"> <p class="item__paragraph">'.$row['text']."</p>";
+        if(is_string($row['image'])==false){
         echo "<div id='img_div'>";
-      	echo "<img src='images/".$row['image']."' >";
-        echo '</div> <div class="buttons">';
+      	echo '<img src="'.$row['image'].'" style="max-width: 211px;" ></div> ';}
+        echo '<div class="buttons">';
         echo '<button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Modify</button>';
         echo '<button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Sent to mail</button>';
         echo '<form action="delete.php" method="post" ><button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Delete</button></form> </div> </div> </div>';
