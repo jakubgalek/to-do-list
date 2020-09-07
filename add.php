@@ -12,7 +12,7 @@ require_once "connect.php";
     else{
     unset($_SESSION['missTitle']);
 
-    
+
 
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -62,6 +62,8 @@ require_once "connect.php";
     }
   }
         $image=$target_file;
+        if ($image=="uploads/") $image="";
+        
         $add = mysqli_query($polaczenie,"INSERT INTO `notatki` (`id`, `title`, `text`, `image`, `user_id`) VALUES ('', '$title', '$text', '$image', '$user_id');");
     
 
