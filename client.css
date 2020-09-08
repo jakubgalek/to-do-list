@@ -193,3 +193,7 @@ a,a:visited
   display: block;
   width: 96%;
 }
+
+.item form{
+  display: contents;
+}

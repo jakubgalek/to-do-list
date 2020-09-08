@@ -53,17 +53,20 @@
     $result = mysqli_query($polaczenie,$query);
     while ($row = mysqli_fetch_array  ($result))
     {
+
+      
         echo '<div class="item">';
+        echo '<form action="mail.php" method="post" >';
         echo '<div class="item__header">';
-        echo '<h2 class="item__title">'.$row['title'].'</h2> </div>';
+        echo '<h2 class="item__title" name="subject">'.$row['title'].'</h2> </div>';
         echo '<div class="item__content"> <p class="item__paragraph">'.$row['text']."</p>";
         if(($row['image'])!="uploads/"){
-        echo "<div id='img_div'>";
+        echo '<div id="img_div" name="message">';
       	echo '<img src="'.$row['image'].'" style="max-width: 211px;" ></div> ';}
         echo '<div class="buttons">';
-        echo '<button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Modify</button>';
-        echo '<button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Sent to mail</button>';
-        echo '<form action="delete.php" method="post" ><button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Delete</button></form> </div> </div> </div>';
+       // echo '<button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Modify</button>';
+        echo '<button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Sent to mail</button></form> </div> </div> </div>';
+       // echo '<form action="delete.php" method="post" ><button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Delete</button></form> </div> </div> </div>';
 
       }
 

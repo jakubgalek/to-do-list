@@ -1,10 +1,9 @@
 <?php
-$to      = 'root@galukas.sytes.net';
-$subject = $_POST['subject'];
+$to      = "projekteuromind@gmail.com";
+$subject = $_POST['title'];
 $message = $_POST['message'];
-$headers = 'From: ' . $_POST['email'] . "\r\n" .
-	'Content-type: text/html; charset=utf-8';
 
-mail($to, $subject, $message, $headers);
-header('Location: gra.php');
+
+mail($to, $subject, $message);
+//header('Location: gra.php');
 ?>
