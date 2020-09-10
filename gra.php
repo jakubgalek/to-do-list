@@ -17,6 +17,9 @@
 	<title>To-Do-List</title>
 	<link rel="icon" type="image/png" href="favicon.png">
 	<link rel="stylesheet" href="client.css">
+  	<!--[if lt IE 9]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->
 </head>
 
 <body>
@@ -33,7 +36,7 @@
    <div class="form-box">
    <h1 class="form-box__title">Add new task</h1>
      <form class="form-box__form form" action="add.php" enctype="multipart/form-data" method="post">
-       <input class="form__text-input" type="text" name="title" id="e-mail" placeholder="Title">
+       <input class="form__text-input" type="text" name="title" placeholder="Title">
        <textarea class="form__text-input"  name="text" id="password" placeholder="Write something..." rows="12"></textarea>
   	   <div>
   	         <input type="file" name="fileToUpload" id="fileToUpload">
@@ -58,14 +61,14 @@
         echo '<div class="item">';
         echo '<form action="mail.php" method="post" >';
         echo '<div class="item__header">';
-        echo '<h2 class="item__title">'.$row['title'].'</h2> </div>';
-        echo '<div class="item__content"> <p class="item__paragraph">'.$row['text']."</p>";
-        echo '<input  name="title" type="hidden" value="'.$row['title'].'">';
-        echo '<input  name="message" type="hidden" value="'.$row['text'].'">';
-        echo '<input  name="image" type="hidden" value="'.$row['image'].'">';
+        echo '<h2 class="item__title" onclick="zmien()" id="dd">'.$row['title'].'</h2> </div>';
+        echo '<div class="item__content"> <p class="item__paragraph" onclick="zmien2()" id="ee">'.$row['text']."</p>";
+        echo '<input  name="title" type="hidden" value="'.$row['title'].'"id="title">';
+        echo '<input  name="message" type="hidden" value="'.$row['text'].'"id="message">';
+        echo '<input  name="image" type="hidden" value="'.$row['image'].'"id="image">';
         if(($row['image'])!="uploads/"){
         echo '<div id="img_div">';
-      	echo '<img src="'.$row['image'].'" style="max-width: 211px;" ></div> ';}
+      	echo '<img  onclick="zmien3()" id="ff" src="'.$row['image'].'" style="max-width: 211px;" ></div> ';}
         echo '<div class="buttons">';
         echo '<button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Modify</button>';
         echo '<button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Sent to mail</button></form>';
@@ -76,6 +79,24 @@
        if(isset($_SESSION['missTitle']))	echo $_SESSION['missTitle'];
        unset($_SESSION['missTitle']);
 ?>
+
+<script>
+function zmien(){
+  let title=document.getElementById("title");
+  title.type = "text";
+  document.getElementById("dd").replaceWith(title );
+}
+function zmien2(){
+  let title=document.getElementById("message");
+  title.type = "textarea";
+  document.getElementById("ee").replaceWith(title );
+}
+function zmien3(){
+  let title=document.getElementById("image");
+  title.type = "file";
+  document.getElementById("ff").replaceWith(title );
+}
+</script>
 </div>
 </body>
 </html>
