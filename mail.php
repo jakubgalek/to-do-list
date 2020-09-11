@@ -98,5 +98,5 @@ if(mail($to, $subject, $htmlContent, $headers)){
 }else{ 
    echo 'Email sending failed.'.$htmlContent; 
 }
-header('Location: gra.php');
+header('Location: pulpit.php');
 ?>

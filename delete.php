@@ -9,7 +9,7 @@ require_once "connect.php";
     $delete = mysqli_query($polaczenie,"DELETE FROM `notatki` WHERE id='$id'");
     mysqli_close($polaczenie);
     
-    header('Location: gra.php');
+    header('Location: pulpit.php');
 
 
 ?>

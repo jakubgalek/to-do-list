@@ -70,7 +70,7 @@
         echo '<div id="img_div">';
       	echo '<img  onclick="zmien3()" id="ff" src="'.$row['image'].'" style="max-width: 211px;" ></div> ';}
         echo '<div class="buttons">';
-        echo '<button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Modify</button>';
+        echo '<button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Edit</button>';
         echo '<button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Sent to mail</button></form>';
         echo '<form action="delete.php" method="post" ><button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Delete</button></form> </div> </div> </div>';
 

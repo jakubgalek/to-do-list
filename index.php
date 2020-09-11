@@ -4,7 +4,7 @@
 	
 	if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
 	{
-		header('Location: gra.php');
+		header('Location: pulpit.php');
 		exit();
 	}
 

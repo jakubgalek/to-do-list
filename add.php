@@ -69,6 +69,6 @@ require_once "connect.php";
 
 }
     mysqli_close($polaczenie);
-    header('Location: gra.php');
+    header('Location: pulpit.php');
 
 ?>
