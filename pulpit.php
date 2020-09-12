@@ -27,7 +27,7 @@
     <span class="logo">To Do List</span>
     <ul class="menu">
       <li class="menu__item"><?php echo "Hello ".$_SESSION['user'].' !'; ?></li>
-      <li class="menu__item">Settings</li>
+      <li class="menu__item"><?php echo '<a href="settings.php">Settings</a>'; ?></li>
       <li class="menu__item"><?php echo '<a href="logout.php">Log Out!</a>'; ?></li>
     </ul>
   </nav>
