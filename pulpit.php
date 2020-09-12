@@ -23,7 +23,7 @@
 </head>
 
 <body>
-	<nav class="navigation">
+	<nav class="navigation" onclick="wyczysc()">
     <span class="logo">To Do List</span>
     <ul class="menu">
       <li class="menu__item"><?php echo "Hello ".$_SESSION['user'].' !'; ?></li>
@@ -66,12 +66,13 @@
         echo '<input  name="title" type="hidden" value="'.$row['title'].'"id="title">';
         echo '<input  name="message" type="hidden" value="'.$row['text'].'"id="message">';
         echo '<input  name="image" type="hidden" value="'.$row['image'].'"id="image">';
+        echo '<input  type="hidden" name="id" value="'.$row['id'].'"  style="display:none">';
         if(($row['image'])!="uploads/"){
         echo '<div id="img_div">';
       	echo '<img  onclick="zmien3()" id="ff" src="'.$row['image'].'" style="max-width: 211px;" ></div> ';}
         echo '<div class="buttons">';
-        echo '<button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Edit</button>';
-        echo '<button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Sent to mail</button></form>';
+        echo '<button class="item__button button" type="submit" name="edit" value="edit">Edit</button>';
+        echo '<button class="item__button button" type="submit" name="edit" value="'.$row['id'].'">Sent to mail</button></form>';
         echo '<form action="delete.php" method="post" ><button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Delete</button></form> </div> </div> </div>';
 
       }
@@ -85,7 +86,15 @@ function zmien(){
   let title=document.getElementById("title");
   title.type = "text";
   document.getElementById("dd").replaceWith(title );
+
 }
+
+function wyczysc(){
+    let title=document.getElementById("title");
+  title.type = "text";
+    (title).replaceWith(document.getElementById("dd"));
+
+  }
 function zmien2(){
   let title=document.getElementById("message");
   title.type = "textarea";
