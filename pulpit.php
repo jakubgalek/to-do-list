@@ -19,7 +19,6 @@
 	<link rel="stylesheet" href="client.css">
   	<!--[if lt IE 9]>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="pulpit.js"></script>
 	<![endif]-->
 </head>
 
@@ -62,25 +61,49 @@
         echo '<div class="item">';
         echo '<form action="mail.php" method="post" >';
         echo '<div class="item__header">';
-        echo '<h2 class="item__title" id="title">'.$row['title'].'</h2> </div>';
-        echo '<div class="item__content"> <p class="item__paragraph" id="message">'.$row['text']."</p>";
-        echo '<input  name="title" type="hidden" value="'.$row['title'].'"id="i_title">';
-        echo '<input  name="message" type="hidden" value="'.$row['text'].'"id="i_message">';
-        echo '<input  name="image" type="hidden" value="'.$row['image'].'"id="i_image">';
+        echo '<h2 class="item__title" onclick="zmien1()" id="dd">'.$row['title'].'</h2> </div>';
+        echo '<div class="item__content"> <p class="item__paragraph" onclick="zmien2()" id="ee">'.$row['text']."</p>";
+        echo '<input  name="title" type="hidden" value="'.$row['title'].'"id="title">';
+        echo '<input  name="message" type="hidden" value="'.$row['text'].'"id="message">';
+        echo '<input  name="image" type="hidden" value="'.$row['image'].'"id="image">';
         echo '<input  type="hidden" name="id" value="'.$row['id'].'"  style="display:none">';
         if(($row['image'])!="uploads/"){
         echo '<div id="img_div">';
-      	echo '<img id="image" src="'.$row['image'].'" style="max-width: 211px;" ></div> ';}
+      	echo '<img onclick="zmien3()" id="ff" src="'.$row['image'].'" style="max-width: 211px;" ></div> ';}
         echo '<div class="buttons">';
         echo '<button class="item__button button" type="submit" name="edit" value="edit">Edit</button>';
         echo '<button class="item__button button" type="submit" name="edit" value="'.$row['id'].'">Sent to mail</button></form>';
-        echo '<form action="delete.php" method="post" ><button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Delete</button></form> </div> </div> </div>';
+        echo '<form action="delete_task.php" method="post" ><button class="item__button button" type="submit" name="id" value="'.$row['id'].'">Delete</button></form> </div> </div> </div>';
 
       }
 
        if(isset($_SESSION['missTitle']))	echo $_SESSION['missTitle'];
        unset($_SESSION['missTitle']);
 ?>
+
+<script>
+function zmien1(){
+  let title=document.getElementById("title");
+  title.type = "text";
+  document.getElementById("dd").replaceWith(title );
+}
+function zmien2(){
+  let title=document.getElementById("message");
+  title.type = "textarea";
+  document.getElementById("ee").replaceWith(title );
+}
+function zmien3(){
+  let title=document.getElementById("image");
+  title.type = "file";
+  document.getElementById("ff").replaceWith(title );
+}
+function wyczysc(){
+    let title=document.getElementById("title");
+  title.type = "text";
+    (title).replaceWith(document.getElementById("dd"));
+
+  }
+</script>
 </div>
 </body>
 </html>

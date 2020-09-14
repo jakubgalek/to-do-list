@@ -28,7 +28,6 @@
       <li class="menu__item"><?php echo '<a href="logout.php">Log Out!</a>'; ?></li>
     </ul>
   </nav>
-  <div class="container">
 
 
 <?php
@@ -44,7 +43,7 @@
     while ($row = mysqli_fetch_array  ($result))
     {
 
-        echo "Your account details";
+        echo " <br /><br /><br /><br />Your account details";
         echo "<br />";
         echo "<br />";
         echo "<br />";
@@ -55,13 +54,13 @@
         echo "<br />";
         echo "<br />";
         echo "Password ->  ".$row['pass'];
+        echo "<br /> <br /> <br />";
         echo "<br />";
-        echo "<br />";
+        echo '<a href="delete_account.php"> DELETE MY ACCOUNT </a>';
 
       }
 
 
 ?>
-
 </body>
 </html>
